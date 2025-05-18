@@ -11,7 +11,10 @@ export default function SectionWrapper(props) {
         </h2>
 
     </div>
-    {children}
+    <div className='max-w-[800px] w-full flex flex-col mx-auto gap-10 '>
+        {children}
+    </div>
+
         </section>
   ) 
 }
