@@ -35,7 +35,8 @@ export default function Generator() {
       <Header index={'02'} title={'Lock on targets'} description={'Select the muscles judged for annihilation.'}/>
       <div className=''>
         <div>
-          <p>Select muscles group </p>
+              <p>Select muscles group </p>
+              <i class="fa-solid fa-caret-down"></i>
         </div>
       </div>
      
