@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import SectionWrapper from './SectionWrapper'
 import { WORKOUTS } from '../utlis/swoldier'
 
@@ -16,10 +16,10 @@ function Header(props){
   )
 }
 export default function Generator() {
-
-  let showModal = false;
+  const [showModal,setshowModal] = useState(false)
+  //let showModal = false;
   function toggleModal(){
-    showModal = !showModal
+    setshowModal(!showModal)
   }
   return (
     // <div className='min-h-screen'>
