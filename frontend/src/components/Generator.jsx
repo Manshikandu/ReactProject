@@ -16,6 +16,11 @@ function Header(props){
   )
 }
 export default function Generator() {
+
+  let showModal = false;
+  function toggleModal(){
+    showModal = !showModal
+  }
   return (
     // <div className='min-h-screen'>
      
@@ -33,11 +38,14 @@ export default function Generator() {
       </div>
 
       <Header index={'02'} title={'Lock on targets'} description={'Select the muscles judged for annihilation.'}/>
-      <div className=''>
-        <div>
+      <div className='bg-slate-950 p-3 border border-solid border-blue-400 rounded-lg flex flex-col'>
+        <button onClick={toggleModal}className='relative  p-3 flex items-center justify-center'>
               <p>Select muscles group </p>
-              <i class="fa-solid fa-caret-down"></i>
-        </div>
+              <i class="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-caret-down"></i>
+        </button>
+      { showModal && (
+         <div>modal</div>
+      )}
       </div>
      
     </SectionWrapper>
