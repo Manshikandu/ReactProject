@@ -18,8 +18,8 @@ function Header(props){
 export default function Generator() {
   const [showModal,setshowModal] = useState(false)
    const[poison , setPoison] = useState('individual')
-  // const[muscles, serMuscles] = useState([])
-  // const[goals , setGoals] = useState('strength_power')
+  const[muscles, setMuscles] = useState([])
+  const[goals , setGoals] = useState('strength_power')
 
   //let showModal = false;
   function toggleModal(){
@@ -36,7 +36,7 @@ export default function Generator() {
         return (
           <button onClick={()=>{
             setPoison(type)
-          }} className ={ 'bg-slate-950 border border-blue-400  duration-200 hover:border-blue-600 py-3 rounded-lg  ' + ( type === poison ? ' ' : ' ')} key={typeIndex}>
+          }} className ={ 'bg-slate-950 border border-blue-400  duration-200 hover:border-blue-600 py-3 rounded-lg  ' + ( type === poison ? 'border-blue-600 ' : 'border-blue-400')} key={typeIndex}>
             <p className='capitalize'>{type.replaceAll('_'," ")}</p>
           </button>
         )
@@ -45,12 +45,21 @@ export default function Generator() {
 
       <Header index={'02'} title={'Lock on targets'} description={'Select the muscles judged for annihilation.'}/>
       <div className='bg-slate-950 p-3 border border-solid border-blue-400 rounded-lg flex flex-col'>
-        <button onClick={toggleModal()}className='relative  p-3 flex items-center justify-center'>
+        <button onClick={toggleModal}className='relative  p-3 flex items-center justify-center'>
               <p>Select muscles group </p>
               <i class="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-caret-down"></i>
         </button>
       { showModal && (
-         <div>modal</div>
+         <div className='flex flex-col p-3 p-x-3'>
+          {(poison === 'individual'? WORKOUTS[poison] : Object.keys(WORKOUTS[poison])).map((musclesGroup, musclesGroupIndex)=> {
+            return(
+             
+              <button key={musclesGroupIndex}>
+                <p>{musclesGroup}</p>
+              </button>
+            )
+          })}
+         </div>
       )}
       </div>
 
@@ -58,12 +67,16 @@ export default function Generator() {
       <Header index={'03'} title={'Become Juggernaut'} description={'Select your ultimative objective'}/>
       <div className='grid grid-cols-3  gap-4'>
          {Object.keys(SCHEMES).map((scheme, schemeIndex) => {
+       
         return (
-          <button  className = 'bg-slate-950 border border-blue-400  duration-200 hover:border-blue-600 py-3 rounded-lg ' key={schemeIndex}>
+          <button onClick={()=>{
+            setGoals(scheme)
+          }} className ={ 'bg-slate-950 border border-blue-400  duration-200 hover:border-blue-600 py-3 rounded-lg  ' + ( scheme === goals ? 'border-blue-600 ' : 'border-blue-400 ')} key={schemeIndex}>
             <p className='capitalize'>{scheme.replaceAll('_'," ")}</p>
           </button>
         )
       })}
+       
       </div>
     </SectionWrapper>
   )
