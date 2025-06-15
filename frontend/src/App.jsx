@@ -18,7 +18,8 @@ function App() {
     if (muscles.length < 1 ){
       return
     }
-    let newWorkout = generateWorkout(poison , muscles,goals)
+    let newWorkout = generateWorkout({poison , muscles,goals})
+    console.log(newWorkout)
     setWorkout(newWorkout)
   }
 
@@ -34,7 +35,7 @@ function App() {
       />
       {workout && (<Workout workout={workout} />)}
       
-      
+      {/* <Workout /> */}
     </main>
   )
 }
